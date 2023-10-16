@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CourseStudentDTO {
+    Long id;
     String studentid;
     String name;
     String surname;
