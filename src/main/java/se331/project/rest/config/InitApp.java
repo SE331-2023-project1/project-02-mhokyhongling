@@ -54,6 +54,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .department("SE")
                 .build());
 
+
+        
         Course c1,c2,c3;
         c1 = courseRepository.save(Course.builder()
                 .name("Animation for Se")
