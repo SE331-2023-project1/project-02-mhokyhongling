@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import se331.project.rest.entity.Advisor;
 import se331.project.rest.entity.Course;
@@ -40,6 +40,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .surname("Tachamanokul")
                 .department("Software Engineer")
                 .location("Chiang mai")
+
                 .build());
         s2 = studentRepository.save(Student.builder()
                 .id(002L)
@@ -86,22 +87,22 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     Advisor a1, a2, a3;
         a1 = advisorRepository.save(Advisor.builder()
             .id(11L)
-            .name("dr.supanut")
-            .surname("manilmunggorn")
+            .name("Dr.Supanut")
+            .surname("Manilmunggorn")
             .academic_position("SE Department Chief ")
             .department("SE")
             .build());
         a1 = advisorRepository.save(Advisor.builder()
                 .id(12L)
-                .name("dr.Watcharit")
+                .name("Dr.Watcharit")
                 .surname("Sangsom")
                 .academic_position("SE Chief Assistant")
                 .department("SE")
                 .build());
         a1 = advisorRepository.save(Advisor.builder()
                 .id(13L)
-                .name("dr.Kittipat")
-                .surname("talatubby")
+                .name("Dr.Kittipat")
+                .surname("Talatubby")
                 .academic_position("SE Professor")
                 .department("SE")
                 .build());
@@ -125,7 +126,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .courseid("953113")
                 .description("This is mathematics for Se ")
                 .build());
-
     }
 
 
