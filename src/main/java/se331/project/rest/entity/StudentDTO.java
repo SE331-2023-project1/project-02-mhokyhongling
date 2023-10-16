@@ -23,5 +23,4 @@ public class StudentDTO {
     StudentAdvisorDTO advisor;
     List<StudentCourseDTO> courses;
 
-
 }

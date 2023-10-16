@@ -32,57 +32,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Override
     @Transactional
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-        Student s1, s2, s3, s4, s5,s6;
-        s1 = studentRepository.save(Student.builder()
-                .id(001L)
-                .studentid("642115005")
-                .name("Kittipat")
-                .surname("Tachamanokul")
-                .department("Software Engineer")
-                .location("Chiang mai")
-
-                .build());
-        s2 = studentRepository.save(Student.builder()
-                .id(002L)
-                .studentid("642115011")
-                .name("Yanwarut")
-                .surname("Suksawat")
-                .department("Software Engineer")
-                .location("Chiang mai")
-                .build());
-        s3 = studentRepository.save(Student.builder()
-                .id(003L)
-                .studentid("642115012")
-                .name("Yada")
-                .surname("Lakhornjun")
-                .department("Software Engineer")
-                .location("Chiang mai")
-                .build());
-        s4 = studentRepository.save(Student.builder()
-                .id(004L)
-                .studentid("642115041")
-                .name("Wacharit")
-                .surname("Srichai")
-                .department("Software Engineer")
-                .location("Chiang mai")
-                .build());
-        s5 = studentRepository.save(Student.builder()
-                .id(005L)
-                .studentid("642118000")
-                .name("DJ.Aong ang")
-                .surname("Sabudpan")
-                .department("Software Engineer")
-                .location("Chiang mai")
-                .build());
-        s6 = studentRepository.save(Student.builder()
-                .id(006L)
-                .studentid("642115044")
-                .name("Supanut")
-                .surname("Maneeyot")
-                .department("Software Engineer")
-                .location("Chiang mai")
-                .build());
-
 
     Advisor a1, a2, a3;
         a1 = advisorRepository.save(Advisor.builder()
@@ -92,14 +41,14 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
             .academic_position("SE Department Chief ")
             .department("SE")
             .build());
-        a1 = advisorRepository.save(Advisor.builder()
+        a2 = advisorRepository.save(Advisor.builder()
                 .id(12L)
                 .name("Dr.Watcharit")
                 .surname("Sangsom")
                 .academic_position("SE Chief Assistant")
                 .department("SE")
                 .build());
-        a1 = advisorRepository.save(Advisor.builder()
+        a3 = advisorRepository.save(Advisor.builder()
                 .id(13L)
                 .name("Dr.Kittipat")
                 .surname("Talatubby")
@@ -126,6 +75,71 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .courseid("953113")
                 .description("This is mathematics for Se ")
                 .build());
+
+        Student tempStudent;
+        tempStudent = studentRepository.save(Student.builder()
+                .studentid("642115005")
+                .name("Kittipat")
+                .surname("Tachamanokul")
+                .department("Software Engineer")
+                .location("Chiang mai")
+                .build());
+        tempStudent.setAdvisor(a1);
+        a1.getOwnStudents().add(tempStudent);
+
+
+        tempStudent = studentRepository.save(Student.builder()
+                .studentid("642115011")
+                .name("Yanwarut")
+                .surname("Suksawat")
+                .department("Software Engineer")
+                .location("Chiang mai")
+                .build());
+        tempStudent.setAdvisor(a2);
+        a2.getOwnStudents().add(tempStudent);
+
+
+        tempStudent = studentRepository.save(Student.builder()
+                .studentid("642115012")
+                .name("Yada")
+                .surname("Lakhornjun")
+                .department("Software Engineer")
+                .location("Chiang mai")
+                .build());
+        tempStudent.setAdvisor(a3);
+        a3.getOwnStudents().add(tempStudent);
+
+        tempStudent = studentRepository.save(Student.builder()
+                .studentid("642115014")
+                .name("Nichakamol")
+                .surname("Sangsom")
+                .department("Software Engineer")
+                .location("Chiang mai")
+                .build());
+        tempStudent.setAdvisor(a1);
+        a1.getOwnStudents().add(tempStudent);
+
+
+        tempStudent = studentRepository.save(Student.builder()
+                .studentid("642115041")
+                .name("Wacharit")
+                .surname("Srichai")
+                .department("Software Engineer")
+                .location("Chiang mai")
+                .build());
+        tempStudent.setAdvisor(a3);
+        a3.getOwnStudents().add(tempStudent);
+
+
+        tempStudent = studentRepository.save(Student.builder()
+                .studentid("642115044")
+                .name("Supanut")
+                .surname("Maneeyot")
+                .department("Software Engineer")
+                .location("Chiang mai")
+                .build());
+        tempStudent.setAdvisor(a2);
+        a2.getOwnStudents().add(tempStudent);
     }
 
 
