@@ -19,7 +19,7 @@ public class Course {
     String courseid;
     String name;
     String description;
-    @ManyToMany (mappedBy = "courses")
+    @ManyToMany
     @Builder.Default
     List<Student> studentHistory = new ArrayList<>();
 

@@ -18,6 +18,7 @@ import se331.project.rest.repository.StudentRepository;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 @Component
 @RequiredArgsConstructor
@@ -35,21 +36,18 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
     Advisor a1, a2, a3;
         a1 = advisorRepository.save(Advisor.builder()
-            .id(11L)
             .name("Dr.Supanut")
             .surname("Manilmunggorn")
             .academic_position("SE Department Chief ")
             .department("SE")
             .build());
         a2 = advisorRepository.save(Advisor.builder()
-                .id(12L)
                 .name("Dr.Watcharit")
                 .surname("Sangsom")
                 .academic_position("SE Chief Assistant")
                 .department("SE")
                 .build());
         a3 = advisorRepository.save(Advisor.builder()
-                .id(13L)
                 .name("Dr.Kittipat")
                 .surname("Talatubby")
                 .academic_position("SE Professor")
@@ -58,19 +56,16 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
         Course c1,c2,c3;
         c1 = courseRepository.save(Course.builder()
-                .id(1001L)
                 .name("Animation for Se")
                 .courseid("953111")
                 .description("For Create Animation")
                 .build());
         c2 = courseRepository.save(Course.builder()
-                .id(1002L)
                 .name("Component base")
                 .courseid("953112")
                 .description("This course is very hard")
                 .build());
         c3 = courseRepository.save(Course.builder()
-                .id(1003L)
                 .name("Math for Se")
                 .courseid("953113")
                 .description("This is mathematics for Se ")
@@ -85,9 +80,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .location("Chiang mai")
                 .build());
         tempStudent.setAdvisor(a1);
-        a1.getOwnStudents().add(tempStudent);
-
-
+        c1.getStudentHistory().add(tempStudent);
+        c2.getStudentHistory().add(tempStudent);
         tempStudent = studentRepository.save(Student.builder()
                 .studentid("642115011")
                 .name("Yanwarut")
@@ -96,8 +90,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .location("Chiang mai")
                 .build());
         tempStudent.setAdvisor(a2);
-        a2.getOwnStudents().add(tempStudent);
-
+        c1.getStudentHistory().add(tempStudent);
 
         tempStudent = studentRepository.save(Student.builder()
                 .studentid("642115012")
@@ -107,7 +100,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .location("Chiang mai")
                 .build());
         tempStudent.setAdvisor(a3);
-        a3.getOwnStudents().add(tempStudent);
+        c2.getStudentHistory().add(tempStudent);
+        c3.getStudentHistory().add(tempStudent);
 
         tempStudent = studentRepository.save(Student.builder()
                 .studentid("642115014")
@@ -117,8 +111,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .location("Chiang mai")
                 .build());
         tempStudent.setAdvisor(a1);
-        a1.getOwnStudents().add(tempStudent);
-
+        c1.getStudentHistory().add(tempStudent);
+        c2.getStudentHistory().add(tempStudent);
+        c3.getStudentHistory().add(tempStudent);
 
         tempStudent = studentRepository.save(Student.builder()
                 .studentid("642115041")
@@ -128,8 +123,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .location("Chiang mai")
                 .build());
         tempStudent.setAdvisor(a3);
-        a3.getOwnStudents().add(tempStudent);
-
+        c3.getStudentHistory().add(tempStudent);
 
         tempStudent = studentRepository.save(Student.builder()
                 .studentid("642115044")
@@ -139,7 +133,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .location("Chiang mai")
                 .build());
         tempStudent.setAdvisor(a2);
-        a2.getOwnStudents().add(tempStudent);
+        c1.getStudentHistory().add(tempStudent);
+        c2.getStudentHistory().add(tempStudent);
+        c3.getStudentHistory().add(tempStudent);
     }
 
 

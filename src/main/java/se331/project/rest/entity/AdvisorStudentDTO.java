@@ -11,6 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdvisorStudentDTO {
-    Long id;
+    String studentid;
     String name;
+    String surname;
+    String department;
+    String location;
 }

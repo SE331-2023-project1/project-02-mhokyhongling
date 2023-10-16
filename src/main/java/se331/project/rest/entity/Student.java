@@ -3,6 +3,7 @@ package se331.project.rest.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Builder
@@ -22,8 +23,9 @@ public class Student {
     String location;
     @ElementCollection
     List<String> images;
-    @ManyToOne() //นักเรียนหลายคนมีที่ปรึกษาได้1ตน
+    @ManyToOne //นักเรียนหลายคนมีที่ปรึกษาได้1ตน
     Advisor advisor;
-    @ManyToMany //นักเรียนหลายคนลงเรียนได้หลายคอร์ส
-    List<Course> courses;
+    @ManyToMany (mappedBy = "studentHistory") //นักเรียนหลายคนลงเรียนได้หลายคอร์
+    @Builder.Default
+    List<Course> courses = new ArrayList<>();
 }

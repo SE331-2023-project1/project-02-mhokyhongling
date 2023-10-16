@@ -18,5 +18,5 @@ public class AdvisorDTO {
     String academic_position;
     String department;
     List<String> images;
-    List<AdvisorStudentDTO> students;
+    List<AdvisorStudentDTO> ownStudents;
 }
