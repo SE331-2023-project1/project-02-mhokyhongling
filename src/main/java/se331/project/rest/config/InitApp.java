@@ -24,6 +24,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final StudentRepository studentRepository;
     final AdvisorRepository advisorRepository;
     @Autowired
+
     final CourseRepository courseRepository;
 
     @Override
