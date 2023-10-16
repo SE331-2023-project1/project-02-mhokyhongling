@@ -8,6 +8,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import se331.project.rest.entity.Advisor;
+import se331.project.rest.entity.Course;
 import se331.project.rest.entity.Student;
 import se331.project.rest.repository.AdvisorRepository;
 import se331.project.rest.repository.CourseRepository;
@@ -65,9 +67,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
         s5 = studentRepository.save(Student.builder()
                 .id(005L)
-                .studentid("642115041")
-                .name("Wacharit")
-                .surname("Srichai")
+                .studentid("642118000")
+                .name("DJ.Aong ang")
+                .surname("Sabudpan")
                 .department("Software Engineer")
                 .location("Chiang mai")
                 .build());
@@ -79,79 +81,52 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .department("Software Engineer")
                 .location("Chiang mai")
                 .build());
+
+
+    Advisor a1, a2, a3;
+        a1 = advisorRepository.save(Advisor.builder()
+            .id(11L)
+            .name("dr.supanut")
+            .surname("manilmunggorn")
+            .academic_position("SE Department Chief ")
+            .department("SE")
+            .build());
+        a1 = advisorRepository.save(Advisor.builder()
+                .id(12L)
+                .name("dr.Watcharit")
+                .surname("Sangsom")
+                .academic_position("SE Chief Assistant")
+                .department("SE")
+                .build());
+        a1 = advisorRepository.save(Advisor.builder()
+                .id(13L)
+                .name("dr.Kittipat")
+                .surname("talatubby")
+                .academic_position("SE Professor")
+                .department("SE")
+                .build());
+
+        Course c1,c2,c3;
+        c1 = courseRepository.save(Course.builder()
+                .id(1001L)
+                .name("Animation for Se")
+                .courseid("953111")
+                .description("For Create Animation")
+                .build());
+        c2 = courseRepository.save(Course.builder()
+                .id(1002L)
+                .name("Component base")
+                .courseid("953112")
+                .description("This course is very hard")
+                .build());
+        c3 = courseRepository.save(Course.builder()
+                .id(1003L)
+                .name("Math for Se")
+                .courseid("953113")
+                .description("This is mathematics for Se ")
+                .build());
+
     }
-//        Organizer org1, org2, org3;
-//        org1 = organizerRepository.save(Organizer.builder()
-//                .name("CAMT").build());
-//        org2 = organizerRepository.save(Organizer.builder()
-//                .name("CMU").build());
-//        org3 = organizerRepository.save(Organizer.builder()
-//                .name("ChiangMai").build());
-//        Event tempEvent;
-//        tempEvent = eventRepository.save(Event.builder()
-//                .category("Academic")
-//                .title("Midterm Exam")
-//                .description("A time for taking the exam")
-//                .location("CAMT Building")
-//                .date("3rd Sept")
-//                .time("3.00-4.00 pm.")
-//                .petAllowed(false)
-//                .build());
-//        tempEvent.setOrganizer(org1);
-//        org1.getOwnEvents().add(tempEvent);
-//        p1.getEventHistory().add(tempEvent);
-//        p2.getEventHistory().add(tempEvent);
-//        p3.getEventHistory().add(tempEvent);
-//        tempEvent = eventRepository.save(Event.builder()
-//                .category("Academic")
-//                .title("Commencement Day")
-//                .description("A time for taking the exam")
-//                .location("CMU Convention hall")
-//                .date("21th Jan")
-//                .time("8.00am-4.00 pm.")
-//                .petAllowed(false)
-//                .build());
-//        tempEvent.setOrganizer(org1);
-//        org1.getOwnEvents().add(tempEvent);
-//        p1.getEventHistory().add(tempEvent);
-//        p2.getEventHistory().add(tempEvent);
-//        p3.getEventHistory().add(tempEvent);
-//        tempEvent = eventRepository.save(Event.builder()
-//                .category("Cultural")
-//                .title("Loy Krathong")
-//                .description("A time for Krathong")
-//                .location("Ping River")
-//                .date("21th Nov")
-//                .time("8.00-10.00 pm.")
-//                .petAllowed(false)
-//                .build());
-//        tempEvent.setOrganizer(org2);
-//        org2.getOwnEvents().add(tempEvent);
-//        p1.getEventHistory().add(tempEvent);
-//        p2.getEventHistory().add(tempEvent);
-//        p4.getEventHistory().add(tempEvent);
-//        tempEvent = eventRepository.save(Event.builder()
-//                .category("Cultural")
-//                .title("Songkran")
-//                .description("Let's Play Water")
-//                .location("Chiang Mai Moat")
-//                .date("13th April")
-//                .time("10.00-6.00 pm.")
-//                .petAllowed(false)
-//                .build());
-//        tempEvent.setOrganizer(org3);
-//        org3.getOwnEvents().add(tempEvent);
-//        p3.getEventHistory().add(tempEvent);
-//        p4.getEventHistory().add(tempEvent);
-//        p5.getEventHistory().add(tempEvent);
-//        addUser();
-//        org1.setUser(user1);
-//        user1.setOrganizer(org1);
-//        org2.setUser(user2);
-//        user2.setOrganizer(org2);
-//        org3.setUser(user3);
-//        user3.setOrganizer(org3);
-//
-//
-//    }
+
+
 }
