@@ -40,6 +40,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .surname("Tachamanokul")
                 .department("Software Engineer")
                 .location("Chiang mai")
+
                 .build());
         s2 = studentRepository.save(Student.builder()
                 .id(002L)
