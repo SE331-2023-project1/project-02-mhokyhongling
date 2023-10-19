@@ -17,4 +17,5 @@ public class CourseDTO {
     String name;
     String description;
     List<CourseStudentDTO> studentHistory;
+    List<String> images;
 }

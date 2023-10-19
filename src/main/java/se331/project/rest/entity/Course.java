@@ -19,6 +19,7 @@ public class Course {
     String courseid;
     String name;
     String description;
+    List<String> images;
     @ManyToMany
     @Builder.Default
     List<Student> studentHistory = new ArrayList<>();
