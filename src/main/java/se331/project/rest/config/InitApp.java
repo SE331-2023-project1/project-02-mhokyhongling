@@ -64,16 +64,19 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .name("Animation for Se")
                 .courseid("953111")
                 .description("For Create Animation")
+                .images(List.of("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgG2ibNXhcNmqCmBeWn9Kjb4lEZJ8KBWgmg0fXRsQWwrzoGf9SJDtE8g9pi402JBj8KtA&usqp=CAU"))
                 .build());
         c2 = courseRepository.save(Course.builder()
                 .name("Component base")
                 .courseid("953112")
                 .description("This course is very hard")
+                .images(List.of("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv7JLnX6AMmRGdISJ2jpIbHeuHdULU3sTHt1QZFLA3pBTwBbM86izMVRiokAddNnD1ais&usqp=CAU"))
                 .build());
         c3 = courseRepository.save(Course.builder()
                 .name("Math for Se")
                 .courseid("953113")
                 .description("This is mathematics for Se ")
+                        .images(List.of("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgiuBW9e-_0iieqNCztpA0f9_GHFuuWPNrhfhemwHXcyAf-g7gQnN6O8JneoW7cNL5OIc&usqp=CAU"))
                 .build());
 
         Student tempStudent;

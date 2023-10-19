@@ -18,4 +18,5 @@ public class StudentAdvisorDTO {
     String academic_position;
     String department;
     List<String> images;
+
 }
