@@ -1,12 +1,15 @@
 package se331.project.rest.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se331.project.rest.dao.AdvisorDao;
+import se331.project.rest.dao.StudentDao;
 import se331.project.rest.entity.Advisor;
+import se331.project.rest.entity.Student;
 
 import java.util.List;
 
@@ -25,3 +28,4 @@ public class AdvisorServiceImpl implements AdvisorService{
         return advisorDao.getAdvisor(PageRequest.of(page,pageSize));
     }
 }
+
