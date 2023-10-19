@@ -39,8 +39,10 @@ public class StudentServiceImpl implements StudentService{
         return studentDao.save(student);
     }
 
+
     @Override
-    public Page<Student> getStudents(String name, Pageable pageable) {
-        return studentDao.getStudents(name,pageable);
-    }
+    public Page<Student> getStudents(String studentid, Pageable pageable) {
+                return studentDao.getStudents(studentid,pageable);
+            }
+
 }
