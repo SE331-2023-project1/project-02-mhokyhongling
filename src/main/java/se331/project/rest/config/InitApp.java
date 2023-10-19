@@ -56,7 +56,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .surname("Talatubby")
                 .academic_position("SE Professor")
                 .department("SE")
-                .images(List.of("https://www.pixel4k.com/wp-content/uploads/2021/07/the-professor-digital-painting-money-heist-4k_1627767087.jpg"))
+                .images(List.of("https://wallpapercave.com/wp/wp5854927.jpg"))
                 .build());
 
         Course c1,c2,c3;
