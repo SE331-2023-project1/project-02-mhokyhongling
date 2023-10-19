@@ -38,25 +38,25 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
     Advisor a1, a2, a3;
         a1 = advisorRepository.save(Advisor.builder()
-                .name("Dr.Supanut")
+                .name("Dr.Pawisa")
                 .surname("Manilmunggorn")
                 .academic_position("SE Department Chief ")
                 .department("SE")
-                .images(List.of())
+                .images(List.of("https://p5crires.cri.cn/photoworkspace/cri/contentimg/2022/06/13/2022061311532860058.png"))
                 .build());
         a2 = advisorRepository.save(Advisor.builder()
                 .name("Dr.Watcharit")
                 .surname("Sangsom")
                 .academic_position("SE Chief Assistant")
                 .department("SE")
-                .images(List.of())
+                .images(List.of("https://png.pngtree.com/background/20230309/original/pngtree-young-male-math-teacher-in-classroom-vector-picture-image_2108623.jpg"))
                 .build());
         a3 = advisorRepository.save(Advisor.builder()
                 .name("Dr.Kittipat")
                 .surname("Talatubby")
                 .academic_position("SE Professor")
                 .department("SE")
-                .images(List.of())
+                .images(List.of("https://png.pngtree.com/background/20230309/original/pngtree-young-male-math-teacher-in-classroom-vector-picture-image_2108623.jpg"))
                 .build());
 
         Course c1,c2,c3;
