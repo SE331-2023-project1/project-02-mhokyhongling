@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import se331.project.rest.entity.Student;
 import se331.project.rest.repository.StudentRepository;
 
+import java.util.Optional;
+
 @Repository
 @RequiredArgsConstructor
 @Profile("db")
@@ -37,6 +39,11 @@ public class StudentDaoDbImpl implements StudentDao{
     @Override
     public Page<Student> getStudents(String name, Pageable page) {
         return null;
+    }
+
+    @Override
+    public Optional<Student> findById(Long id) {
+        return Optional.empty();
     }
 
 

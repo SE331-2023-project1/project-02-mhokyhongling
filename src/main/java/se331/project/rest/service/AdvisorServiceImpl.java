@@ -17,15 +17,35 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AdvisorServiceImpl implements AdvisorService{
 
+    final StudentDao studentDao;
+
     final AdvisorDao advisorDao;
+
     @Override
     public List<Advisor> getAllAdvisor() {
-        return advisorDao.getAdvisor(Pageable.unpaged()).getContent();
+        return null;
     }
 
     @Override
-    public Page<Advisor> getAdvisor(Integer page, Integer pageSize) {
-        return advisorDao.getAdvisor(PageRequest.of(page,pageSize));
+    public Integer getAdvisorSize() {
+        return advisorDao.getAdvisorSize();
+    }
+    @Override
+    public Page<Advisor> getAdvisors(Integer pageSize, Integer page) {
+        return advisorDao.getAdvisors(pageSize, page);
+    }
+    @Override
+    public Advisor getAdvisor(Long id) {
+        return advisorDao.getAdvisor(id);
+    }
+    @Override
+    @Transactional
+    public Advisor save(Advisor advisor) {
+        return advisorDao.save(advisor);
+    }
+
+    @Override
+    public Page<Advisor> getAdvisors(String name, Pageable pageable) {
+        return advisorDao.getAdvisors(name,pageable);
     }
 }
-
