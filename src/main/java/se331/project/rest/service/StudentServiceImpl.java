@@ -34,8 +34,10 @@ public class StudentServiceImpl implements StudentService{
     @Transactional
     public Student save(Student student) {
         Advisor advisor = advisorDao.findById(student.getAdvisor().getId()).orElse(null);
-        student.setAdvisor(advisor);
-        advisor.getOwnStudents().add(student);
+        if (advisor != null) {
+            student.setAdvisor(advisor);
+            advisor.getOwnStudents().add(student);
+        }
         return studentDao.save(student);
     }
 
