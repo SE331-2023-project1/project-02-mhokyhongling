@@ -42,21 +42,21 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .surname("Manilmunggorn")
                 .academic_position("SE Department Chief ")
                 .department("SE")
-                .images(List.of("https://p5crires.cri.cn/photoworkspace/cri/contentimg/2022/06/13/2022061311532860058.png"))
+                .images(List.of("https://wallpaperset.com/w/full/3/d/6/473897.jpg"))
                 .build());
         a2 = advisorRepository.save(Advisor.builder()
                 .name("Dr.Watcharit")
                 .surname("Sangsom")
                 .academic_position("SE Chief Assistant")
                 .department("SE")
-                .images(List.of("https://png.pngtree.com/background/20230309/original/pngtree-young-male-math-teacher-in-classroom-vector-picture-image_2108623.jpg"))
+                .images(List.of("https://c4.wallpaperflare.com/wallpaper/906/685/91/x-men-x-men-patrick-stewart-patrick-stewart-wallpaper-preview.jpg"))
                 .build());
         a3 = advisorRepository.save(Advisor.builder()
                 .name("Dr.Kittipat")
                 .surname("Talatubby")
                 .academic_position("SE Professor")
                 .department("SE")
-                .images(List.of("https://png.pngtree.com/background/20230309/original/pngtree-young-male-math-teacher-in-classroom-vector-picture-image_2108623.jpg"))
+                .images(List.of("https://www.pixel4k.com/wp-content/uploads/2021/07/the-professor-digital-painting-money-heist-4k_1627767087.jpg"))
                 .build());
 
         Course c1,c2,c3;
