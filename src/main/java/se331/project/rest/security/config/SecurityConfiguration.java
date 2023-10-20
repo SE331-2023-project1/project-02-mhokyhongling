@@ -40,7 +40,8 @@ public class SecurityConfiguration {
                           .anyRequest().authenticated();
               })
 
-            .sessionManagement((session) ->{
+
+              .sessionManagement((session) ->{
               session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
             })
 
