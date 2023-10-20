@@ -1,9 +1,12 @@
 package se331.project.rest.entity;
 import java.util.ArrayList;
 import java.util.List;
+//import se331.project.rest.security.user.User;
 
 import jakarta.persistence.*;
 import lombok.*;
+import se331.project.rest.security.user.User;
+
 @Data
 @Builder
 @Entity
@@ -23,4 +26,6 @@ public class Advisor {
     @OneToMany(mappedBy = "advisor")  //1adviser have many student
     @Builder.Default
     List<Student> ownStudents = new ArrayList<>();
+    @OneToOne
+    User user;
 }

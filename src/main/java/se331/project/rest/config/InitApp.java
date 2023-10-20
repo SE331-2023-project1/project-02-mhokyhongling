@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import se331.project.rest.entity.Advisor;
 import se331.project.rest.entity.Course;
@@ -14,6 +14,8 @@ import se331.project.rest.entity.Student;
 import se331.project.rest.repository.AdvisorRepository;
 import se331.project.rest.repository.CourseRepository;
 import se331.project.rest.repository.StudentRepository;
+import se331.project.rest.security.user.User;
+import se331.project.rest.security.user.UserRepository;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -22,6 +24,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import static se331.project.rest.security.user.Role.ROLE_ADMIN;
+
+
 @Component
 @RequiredArgsConstructor
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
@@ -29,8 +34,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final StudentRepository studentRepository;
     final AdvisorRepository advisorRepository;
     @Autowired
-
     final CourseRepository courseRepository;
+    final UserRepository userRepository;
 
     @Override
     @Transactional
@@ -150,7 +155,53 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         c1.getStudentHistory().add(tempStudent);
         c2.getStudentHistory().add(tempStudent);
         c3.getStudentHistory().add(tempStudent);
+        addUser();
+        a1.setUser(user1);
+        user1.setAdvisor(a1);
+        a2.setUser(user2);
+        user2.setAdvisor(a2);
+        a3.setUser(user3);
+        user3.setAdvisor(a3);
     }
+    User user1, user2, user3;
+    private void addUser() {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        user1 = User.builder()
+                .username("admin")
+                .password(encoder.encode("admin"))
+                .firstname("admin")
+                .lastname("admin")
+                .email("admin@admin.com")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01
+                        ,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
 
+        user2 = User.builder()
+                .username("user")
+                .password(encoder.encode("admin"))
+                .firstname("user")
+                .lastname("user")
+                .email("enabled@user.com")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01
+                        ,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
 
+        user3 = User.builder()
+                .username("disableUser")
+                .password(encoder.encode("disableUser"))
+                .firstname("disableUser")
+                .lastname("disableUser")
+                .email("disableUser@user.com")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01
+                        ,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
+        user1.getRoles().add(ROLE_ADMIN);
+        userRepository.save(user1);
+        userRepository.save(user2);
+        userRepository.save(user3);
+
+    }
 }

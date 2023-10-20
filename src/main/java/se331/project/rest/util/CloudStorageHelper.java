@@ -1,4 +1,5 @@
-package se331.project.rest;
+package se331.project.rest.util;
+
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.Acl;
 import com.google.cloud.storage.BlobInfo;
@@ -8,7 +9,7 @@ import jakarta.servlet.ServletException;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-
+import se331.project.rest.entity.StorageFileDto;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -19,7 +20,8 @@ import java.util.Arrays;
 import java.util.Date;
 
 @Component
-public class CloudStorageHelper {
+public
+class CloudStorageHelper {
     private static Storage storage = null;
 
     static {
@@ -92,4 +94,3 @@ public class CloudStorageHelper {
         return null;
     }
 }
-

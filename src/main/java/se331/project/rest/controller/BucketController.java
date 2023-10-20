@@ -7,7 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
-import se331.project.rest.CloudStorageHelper;
+import se331.project.rest.util.CloudStorageHelper;
+import se331.project.rest.util.LabMapper;
 
 import java.io.IOException;
 @Controller
