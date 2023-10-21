@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import se331.project.rest.entity.Advisor;
+import se331.project.rest.entity.Student;
 import se331.project.rest.security.token.Token;
 
 import java.util.ArrayList;
@@ -50,6 +51,9 @@ public class User implements UserDetails {
   private List<Token> tokens;
   @OneToOne(mappedBy = "user")
   Advisor advisor;
+
+  @OneToOne(mappedBy = "user")
+  Student student;
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return roles.stream().map(role -> new SimpleGrantedAuthority(role.name())).collect(Collectors.toList());

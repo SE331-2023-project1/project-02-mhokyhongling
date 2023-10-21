@@ -29,4 +29,6 @@ public class Student {
     List<Course> courses = new ArrayList<>();
     @ElementCollection
     List<String> images;
+    @OneToOne
+    User user;
 }

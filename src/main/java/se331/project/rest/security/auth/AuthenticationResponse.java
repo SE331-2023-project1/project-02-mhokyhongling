@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import se331.project.rest.entity.Advisor;
-import se331.project.rest.entity.AdvisorAuthDTO;
-import se331.project.rest.entity.AdvisorDTO;
-import se331.project.rest.entity.UserDTO;
+import se331.project.rest.entity.*;
 
 @Data
 @Builder
@@ -21,4 +18,5 @@ public class AuthenticationResponse {
   @JsonProperty("refresh_token")
   private String refreshToken;
   private UserDTO user;
+  private StudentDTO student;
 }
