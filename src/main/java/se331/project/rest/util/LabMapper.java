@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import se331.project.rest.entity.StorageFileDto;
 import se331.project.rest.entity.*;
+import se331.project.rest.security.user.User;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -36,7 +37,7 @@ public interface LabMapper {
     List<AdvisorDTO> getAdvisorDTO(List<Advisor> advisors);
 
     @Mapping(target = "roles", source = "user.roles")
-    AdvisorAuthDTO getAdvisorAuthDTO(Advisor advisor);
+    UserDTO getUserDTO(User user);
 
     CourseDTO getCourseDTO(Course course);
 

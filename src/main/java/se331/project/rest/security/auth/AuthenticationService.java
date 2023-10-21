@@ -65,11 +65,27 @@ public class AuthenticationService {
     String refreshToken = jwtService.generateRefreshToken(user);
 //    revokeAllUserTokens(user);
     saveUserToken(user, jwtToken);
-    return AuthenticationResponse.builder()
-            .accessToken(jwtToken)
-            .refreshToken(refreshToken)
-            .user(LabMapper.INSTANCE.getAdvisorAuthDTO(user.getAdvisor()))
-            .build();
+
+      return AuthenticationResponse.builder()
+              .accessToken(jwtToken)
+              .refreshToken(refreshToken)
+              .user(LabMapper.INSTANCE.getUserDTO(user))
+              .build();
+
+//    if(){
+//      return AuthenticationResponse.builder()
+//              .accessToken(jwtToken)
+//              .refreshToken(refreshToken)
+//              .user(LabMapper.INSTANCE.getAdvisorAuthDTO(user.getAdvisor()))
+//              .build();
+//    }
+//    else {
+//      return AuthenticationResponse.builder()
+//              .accessToken(jwtToken)
+//              .refreshToken(refreshToken)
+//              .user(LabMapper.INSTANCE.getAdvisorAuthDTO(user.getAdvisor()))
+//              .build();
+//    }
   }
 
   private void saveUserToken(User user, String jwtToken) {

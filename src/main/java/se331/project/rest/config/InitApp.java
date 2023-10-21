@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import static se331.project.rest.security.user.Role.ROLE_ADMIN;
+import static se331.project.rest.security.user.Role.*;
 
 
 @Component
@@ -155,13 +155,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         c1.getStudentHistory().add(tempStudent);
         c2.getStudentHistory().add(tempStudent);
         c3.getStudentHistory().add(tempStudent);
+
+
         addUser();
         a1.setUser(user1);
         user1.setAdvisor(a1);
         a2.setUser(user2);
         user2.setAdvisor(a2);
-        a3.setUser(user3);
-        user3.setAdvisor(a3);
     }
     User user1, user2, user3;
     private void addUser() {
@@ -173,32 +173,35 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .lastname("admin")
                 .email("admin@admin.com")
                 .enabled(true)
+                .roles(List.of(ROLE_ADMIN))
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01
                         ,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
 
         user2 = User.builder()
-                .username("user")
-                .password(encoder.encode("admin"))
-                .firstname("user")
-                .lastname("user")
-                .email("enabled@user.com")
+                .username("advisor")
+                .password(encoder.encode("advisor"))
+                .firstname("advisor")
+                .lastname("advisor")
+                .email("advisor@advisor.com")
                 .enabled(true)
+                .roles(List.of(ROLE_ADVISOR))
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01
                         ,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
 
         user3 = User.builder()
-                .username("disableUser")
-                .password(encoder.encode("disableUser"))
-                .firstname("disableUser")
-                .lastname("disableUser")
-                .email("disableUser@user.com")
+                .username("student")
+                .password(encoder.encode("student"))
+                .firstname("student")
+                .lastname("student")
+                .email("student@student.com")
                 .enabled(true)
+                .roles(List.of(ROLE_STUDENT))
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01
                         ,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
-        user1.getRoles().add(ROLE_ADMIN);
+
         userRepository.save(user1);
         userRepository.save(user2);
         userRepository.save(user3);

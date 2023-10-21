@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import se331.project.rest.entity.Advisor;
 import se331.project.rest.entity.AdvisorAuthDTO;
 import se331.project.rest.entity.AdvisorDTO;
+import se331.project.rest.entity.UserDTO;
 
 @Data
 @Builder
@@ -19,5 +20,5 @@ public class AuthenticationResponse {
   private String accessToken;
   @JsonProperty("refresh_token")
   private String refreshToken;
-  private AdvisorAuthDTO user;
+  private UserDTO user;
 }
