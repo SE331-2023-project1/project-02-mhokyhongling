@@ -46,6 +46,8 @@ public class StudentController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"The given id is not found");
         }
     }
+
+
     @PostMapping("students/{id}")
     public ResponseEntity<?> addStudent(@RequestBody Student student,@PathVariable("id") Long id) {
         Student student1 = studentService.getStudent(id);
@@ -75,4 +77,12 @@ public class StudentController {
 
 
     }
+    @PostMapping("/students")
+    public ResponseEntity<?> addStudent(@RequestBody Student student) {
+        Student output = studentService.save(student);
+        return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(output));
+
+    }
 }
+
+
