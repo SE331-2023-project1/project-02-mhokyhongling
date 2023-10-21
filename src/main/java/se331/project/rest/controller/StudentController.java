@@ -46,10 +46,33 @@ public class StudentController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"The given id is not found");
         }
     }
-    @PostMapping("/students")
-    public ResponseEntity<?> addStudent(@RequestBody Student student) {
-        Student output = studentService.save(student);
+    @PostMapping("students/{id}")
+    public ResponseEntity<?> addStudent(@RequestBody Student student,@PathVariable("id") Long id) {
+        Student student1 = studentService.getStudent(id);
+
+        if (!student.getName().isEmpty()) {
+            student1.setName(student.getName());
+        }
+        if (!student.getStudentid().isEmpty()) {
+            student1.setStudentid(student.getStudentid());
+        }
+        if (!student.getSurname().isEmpty()) {
+            student1.setSurname(student.getSurname());
+        }
+        if (!student.getDepartment().isEmpty()) {
+            student1.setDepartment(student.getDepartment());
+        }
+        if (!student.getLocation().isEmpty()) {
+            student1.setLocation(student.getLocation());
+        }
+        if (!student.getImages().isEmpty()) {
+            student1.setImages(student.getImages());
+        }
+
+        Student output = studentService.save(student1);
+
         return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(output));
+
 
     }
 }

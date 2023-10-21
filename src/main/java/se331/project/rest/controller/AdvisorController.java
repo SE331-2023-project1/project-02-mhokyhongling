@@ -48,8 +48,24 @@ public class AdvisorController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"The given id is not found");
         }
     }
-    @PostMapping("/advisors")
-    public ResponseEntity<?> addAdvisor(@RequestBody Advisor advisor) {
+    @PostMapping("/advisors/{id}")
+    public ResponseEntity<?> addAdvisor(@RequestBody Advisor advisor,@PathVariable("id") Long id) {
+        Advisor advisor1 = advisorService.getAdvisor(id);
+        if (!advisor.getName().isEmpty()) {
+            advisor1.setName(advisor.getName());
+        }
+        if (!advisor.getSurname().isEmpty()) {
+            advisor1.setSurname(advisor.getSurname());
+        }
+        if (!advisor.getDepartment().isEmpty()) {
+            advisor1.setDepartment(advisor.getDepartment());
+        }
+        if (!advisor.getAcademic_position().isEmpty()) {
+            advisor1.setAcademic_position(advisor.getAcademic_position());
+        }
+        if (!advisor.getImages().isEmpty()) {
+            advisor1.setImages(advisor.getImages());
+        }
         Advisor output = advisorService.save(advisor);
         return ResponseEntity.ok(LabMapper.INSTANCE.getAdvisorDTO(output));
 
