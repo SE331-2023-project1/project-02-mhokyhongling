@@ -35,16 +35,19 @@ public class CommentServiceImpl implements CommentService{
     }
     @Override
     public Comment getComment(Long id) {
+
         return commentDao.getComment(id);
     }
     @Override
     @Transactional
     public Comment save(Comment comment) {
+
         return commentDao.save(comment);
     }
 
     @Override
     public Page<Comment> getComments(String name, Pageable pageable) {
+
         return commentDao.getComments(name,pageable);
     }
 }

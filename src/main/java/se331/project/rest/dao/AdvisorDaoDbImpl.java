@@ -30,6 +30,7 @@ public class AdvisorDaoDbImpl implements AdvisorDao{
     }
     @Override
     public Advisor getAdvisor(Long id) {
+
         return advisorRepository.findById(id).orElse(null);
     }
 

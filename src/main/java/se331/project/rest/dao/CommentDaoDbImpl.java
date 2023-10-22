@@ -19,10 +19,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Profile("db")
 public class CommentDaoDbImpl implements CommentDao{
-
     final CommentRepository commentRepository;
     @Override
     public Integer getCommentSize() {
+
         return Math.toIntExact(commentRepository.count());
     }
 
@@ -33,21 +33,25 @@ public class CommentDaoDbImpl implements CommentDao{
     }
     @Override
     public Comment getComment(Long id) {
+
         return commentRepository.findById(id).orElse(null);
     }
 
     @Override
     public Comment save(Comment comment) {
+
         return commentRepository.save(comment);
     }
 
     @Override
     public Page<Comment> getComments(String name, Pageable page) {
+
         return null;
     }
 
     @Override
     public Optional<Comment> findById(Long id) {
+
         return Optional.empty();
     }
 
