@@ -31,4 +31,7 @@ public class Student {
     List<String> images;
     @OneToOne
     User user;
+    @OneToMany(mappedBy = "student")
+    @Builder.Default
+    List<Comment> ownComments = new ArrayList<>();
 }

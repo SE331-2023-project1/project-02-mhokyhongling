@@ -42,4 +42,8 @@ public interface LabMapper {
     CourseDTO getCourseDTO(Course course);
 
     List<CourseDTO> getCourseDTO(List<Course> courses);
+
+    CommentDTO getCommentDTO(Comment comment);
+
+    List<CommentDTO> getCommentDTO(List<Comment> comments);
 }
