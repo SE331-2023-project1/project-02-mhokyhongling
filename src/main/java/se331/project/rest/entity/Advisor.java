@@ -30,5 +30,5 @@ public class Advisor {
     User user;
     @OneToMany(mappedBy = "advisor")
     @Builder.Default
-    List<Annouce> ownAnnouce = new ArrayList<>();
+    List<Comment> ownComments = new ArrayList<>();
 }

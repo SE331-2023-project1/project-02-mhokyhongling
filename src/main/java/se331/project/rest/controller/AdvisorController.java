@@ -66,7 +66,7 @@ public class AdvisorController {
         if (!advisor.getImages().isEmpty()) {
             advisor1.setImages(advisor.getImages());
         }
-        Advisor output = advisorService.save(advisor);
+        Advisor output = advisorService.save(advisor1);
         return ResponseEntity.ok(LabMapper.INSTANCE.getAdvisorDTO(output));
 
     }

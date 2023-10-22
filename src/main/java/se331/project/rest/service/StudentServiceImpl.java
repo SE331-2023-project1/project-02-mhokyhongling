@@ -33,11 +33,13 @@ public class StudentServiceImpl implements StudentService{
     @Override
     @Transactional
     public Student save(Student student) {
-        Advisor advisor = advisorDao.findById(student.getAdvisor().getId()).orElse(null);
-        if (advisor != null) {
-            student.setAdvisor(advisor);
-            advisor.getOwnStudents().add(student);
-        }
+//        Advisor advisor = advisorDao.findById(student.getAdvisor().getId()).orElse(null);
+//        if (advisor != null) {
+//            student.setAdvisor(advisor);
+//            advisor.getOwnStudents().add(student);
+//        }else {
+//            return studentDao.save(student);
+//        }
         return studentDao.save(student);
     }
 
