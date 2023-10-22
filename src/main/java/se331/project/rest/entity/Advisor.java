@@ -28,4 +28,7 @@ public class Advisor {
     List<Student> ownStudents = new ArrayList<>();
     @OneToOne
     User user;
+    @OneToMany(mappedBy = "advisor")
+    @Builder.Default
+    List<Annouce> ownAnnouce = new ArrayList<>();
 }

@@ -21,11 +21,27 @@ public class BucketController {
                                         MultipartFile file) throws IOException, ServletException {
         return
                 ResponseEntity.ok(this.cloudStorageHelper.getImageUrl(file,"uploadimagepro-5d83e.appspot.com"));
+
+    }
+
+    @PostMapping("/uploadsFile2")
+    public ResponseEntity<?> uploadFile2(@RequestPart(value = "file2")
+                                        MultipartFile file) throws IOException, ServletException {
+
+        return
+                ResponseEntity.ok(this.cloudStorageHelper.getFileUrl(file,"uploadimagepro-5d83e.appspot.com"));
     }
     @PostMapping("/uploadImage")
     public ResponseEntity<?> uploadFileComponent(@RequestPart(value = "image" )
                                                  MultipartFile file) throws IOException, ServletException{
         return
                 ResponseEntity.ok((this.cloudStorageHelper.getStorageFileDto(file,"uploadimagepro-5d83e.appspot.com")));
+    }
+
+    @PostMapping("/uploadImage2")
+    public ResponseEntity<?> uploadFileComponent2(@RequestPart(value = "image2" )
+                                                 MultipartFile file) throws IOException, ServletException{
+        return
+                ResponseEntity.ok((this.cloudStorageHelper.getStorageFileDto2(file,"uploadimagepro-5d83e.appspot.com")));
     }
 }

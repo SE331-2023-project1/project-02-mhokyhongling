@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import se331.project.rest.entity.StorageFileDto;
+import se331.project.rest.entity.StorageFileDto2;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -74,6 +75,21 @@ class CloudStorageHelper {
         return null;
     }
 
+    public String getFileUrl(MultipartFile file,
+                              final String bucket) throws IOException, ServletException {
+        final String fileName = file.getOriginalFilename();
+        if (fileName != null && !fileName.isEmpty() && fileName.contains(".")) {
+            final String extension = fileName.substring(fileName.lastIndexOf('.') + 1);
+            if (!extension.isEmpty()) {
+                return this.uploadFile(file, bucket);
+            }
+            throw new ServletException("file must be an image");
+        }
+        return null;
+    }
+
+
+
     public StorageFileDto getStorageFileDto(MultipartFile file, final String bucket)
             throws IOException, ServletException {
         final String fileName = file.getOriginalFilename();
@@ -90,6 +106,22 @@ class CloudStorageHelper {
             }
             throw new ServletException("file must be an image");
 
+        }
+        return null;
+    }
+
+    public StorageFileDto2 getStorageFileDto2(MultipartFile file, final String bucket)
+            throws IOException, ServletException {
+        final String fileName = file.getOriginalFilename();
+        if (fileName != null && !fileName.isEmpty() && fileName.contains(".")) {
+            final String extension = fileName.substring(fileName.lastIndexOf('.') + 1);
+            if (!extension.isEmpty()) {
+                String urlName = this.uploadFile(file, bucket);
+                return StorageFileDto2.builder()
+                        .name(urlName)
+                        .build();
+            }
+            throw new ServletException("file must be an image");
         }
         return null;
     }
