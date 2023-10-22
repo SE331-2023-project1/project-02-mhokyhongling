@@ -17,4 +17,5 @@ public interface CommentService {
     Comment save(Comment comment);
 
     Page<Comment> getComments(String name, Pageable pageable);
+    List<Comment> getCommentByStudentId(Long id);
 }

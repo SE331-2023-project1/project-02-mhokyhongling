@@ -13,6 +13,7 @@ import se331.project.rest.repository.AdvisorRepository;
 import se331.project.rest.repository.CommentRepository;
 import se331.project.rest.repository.StudentRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -50,6 +51,9 @@ public class CommentDaoDbImpl implements CommentDao{
     public Optional<Comment> findById(Long id) {
         return Optional.empty();
     }
-
+    @Override
+    public List<Comment> findByStudentId(Long id){
+        return commentRepository.findCommentByStudent_Id(id);
+    }
 
 }

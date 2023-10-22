@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import se331.project.rest.entity.Advisor;
 import se331.project.rest.entity.Comment;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CommentDao {
@@ -14,4 +15,5 @@ public interface CommentDao {
     Comment save(Comment comment);
     Page<Comment> getComments(String name, Pageable page);
     Optional<Comment> findById(Long id);
+    List<Comment> findByStudentId(Long id);
 }

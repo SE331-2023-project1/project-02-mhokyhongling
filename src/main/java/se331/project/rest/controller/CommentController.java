@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import se331.project.rest.entity.Advisor;
 import se331.project.rest.entity.Comment;
+import se331.project.rest.entity.Student;
+import se331.project.rest.request.CommentRequest;
 import se331.project.rest.service.AdvisorService;
 import se331.project.rest.service.CommentService;
+import se331.project.rest.service.StudentService;
 import se331.project.rest.util.LabMapper;
 
 import java.util.List;
@@ -21,6 +24,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentController {
     final CommentService commentService;
+    final StudentService studentService;
+    final AdvisorService advisorService;
     @GetMapping("comments")
     public ResponseEntity<?> getCommentLists(@RequestParam(value = "_limit",
             required = false) Integer perPage
@@ -43,9 +48,9 @@ public class CommentController {
     }
     @GetMapping("comments/{id}")
     public ResponseEntity<?> getComment(@PathVariable("id") Long id) {
-        Comment output = commentService.getComment(id);
-        if (output != null){
-            return ResponseEntity.ok(LabMapper.INSTANCE.getCommentDTO(output));
+        List<Comment> comment = commentService.getCommentByStudentId(id);
+        if (comment != null){
+            return ResponseEntity.ok(LabMapper.INSTANCE.getCommentDTO(comment));
         }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"The given id is not found");
         }
@@ -57,13 +62,17 @@ public class CommentController {
 
     }
     @PostMapping("/comments/{id}")
-    public ResponseEntity<?> addComment(@RequestBody Comment comment,@PathVariable("id") Long id) {
-        Comment comment1 = commentService.getComment(id);
-
-        if (!comment.getDescription().isEmpty()) {
-            comment1.setDescription(comment.getDescription());
-        }
-        Comment output = commentService.save(comment1);
+    public ResponseEntity<?> addComment(@RequestBody CommentRequest request, @PathVariable("id") Long id) {
+        Student student = studentService.getStudent(id);
+        Advisor advisor = advisorService.getAdvisor(request.getAdvisorId());
+        Comment comment = Comment.builder()
+                .description(request.getDescription())
+                .build();
+        comment.setAdvisor(advisor);
+        advisor.setOwnComments(List.of(comment));
+        student.setOwnComments(List.of(comment));
+        comment.setStudent(student);
+        Comment output = commentService.save(comment);
         return ResponseEntity.ok(LabMapper.INSTANCE.getCommentDTO(output));
 
     }

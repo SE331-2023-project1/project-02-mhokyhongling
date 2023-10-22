@@ -47,4 +47,8 @@ public class CommentServiceImpl implements CommentService{
     public Page<Comment> getComments(String name, Pageable pageable) {
         return commentDao.getComments(name,pageable);
     }
+    @Override
+    public List<Comment> getCommentByStudentId(Long id){
+        return commentDao.findByStudentId(id);
+    }
 }
