@@ -22,7 +22,7 @@ public class Comment {
     Student student;
     @ManyToOne
     Advisor advisor;
-     
+
 
 //    @ManyToOne
 //    CommentAnswer commentAnswer;
